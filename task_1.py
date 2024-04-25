@@ -8,22 +8,20 @@ def total_salary(path: str) -> tuple:
 
     Returns:
         tuple: A tuple containing the total salary of all developers and the average wage.
-        If an error occurs, it returns '0' as the total salary and 'unavailable' for the 
-        average wage.
+        If an error occurs, it returns '0' as the total salary and the average wage.
     """
     try:
         with open(path, 'r', encoding='utf-8') as file:
             total_payment = 0
             persons = 0
             for dev_payment in file:
-                personal_wage = int(dev_payment.split(",")[1])
-                total_payment += personal_wage
+                total_payment += int(dev_payment.split(",")[1])
                 persons += 1
-            average_wage = int(total_payment) / persons
-            return (total_payment, int(average_wage)) 
+            average_wage = int(total_payment / persons)
+            return (total_payment, average_wage) 
 
-    except Exception as e:
-        return ('0', 'unavailable')
+    except Exception:
+        return (0, 0)
 
 
 # Test run
