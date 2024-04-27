@@ -5,7 +5,7 @@ def get_cats_info(path):
     lines = read_file(path)
     for line in lines:
         cat_id, name, age = line.split(",")
-        list_of_cats.append({"id": cat_id, "name": name, "age": int(age)})
+        list_of_cats.append({"id": cat_id, "name": name, "age": age.removesuffix('\n')})
 
     return list_of_cats
 
