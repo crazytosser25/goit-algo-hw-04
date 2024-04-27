@@ -21,7 +21,7 @@ def total_salary(path: str) -> tuple:
     #             persons += 1
     #         average_wage = int(total_payment / persons)
     #         return (total_payment, average_wage) 
-
+    # 
     # except Exception:
     #     return (0, 0)
 
@@ -31,9 +31,11 @@ def total_salary(path: str) -> tuple:
     
     total_payment = 0
     persons = 0
+
     for dev_payment in lines:
         total_payment += int(dev_payment.split(",")[1])
         persons += 1
+        
     average_wage = int(total_payment / persons)
     return (total_payment, average_wage) 
     
