@@ -16,7 +16,7 @@ def processing_arguments() -> str:
         print('No path to folder')
 
 
-def parsing_attachments(path: str, counter=1) -> None:
+def parsing_folder(path: str, counter=1) -> None:
     """This function recursively processes each directory and file in the given path.
 
     Args:
@@ -58,4 +58,4 @@ def print_line(name: str, title: str, counter: int) -> None:
 if __name__ == "__main__":
     path_to_dir = processing_arguments()
     if path_to_dir:
-        parsing_attachments(path_to_dir)
+        parsing_folder(path_to_dir)
