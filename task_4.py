@@ -189,6 +189,19 @@ def mistaken_arg(mistake: str) -> str:
         case 'invalid args':
             return f"{Fore.RED}Invalid data.\n{Fore.YELLOW}You must give me Name and Phone-number."
 
+def command_list() -> str:
+    """Returns the list of commands.
+
+    Returns:
+        str: string with all commands
+    """
+    return f"'close' or 'exit'\tto exit assistant.\n" \
+            "'add [name] [phone]'\tto add new contact(phone must be 10 or 13 digits).\n" \
+            "'change [name] [phone]'\tto change contact's phone number.\n" \
+            "'del [name]'\t\tto delete contact from list.\n" \
+            "'phone [name]'\t\tto review contact's phone number.\n" \
+            "'all'\t\t\tto review all contacts.\n" 
+
 def main():
     """This code is designed to create a simple command-line interface (CLI)
     application that interacts with a contacts database. The user can perform
@@ -196,7 +209,7 @@ def main():
     uses the `colorama` module to add colors to the output strings for better
     readability.
     """
-    print(f"\n{Fore.YELLOW}Welcome to the assistant bot!\n")
+    print(f"\n{Fore.YELLOW}Welcome to the assistant bot!\n(enter 'help' for list of commands)\n")
     while True:
         user_input = input(f"Enter a command: {Fore.BLUE}")
         command, *args = parse_input(user_input)
@@ -208,16 +221,18 @@ def main():
         match command:
             case "hello":
                 print(f"{Fore.YELLOW}How can I help you?\n")
+            case "help":
+                print(command_list())
             case "add":
                 print(f"{Fore.YELLOW}{add_contact(args)}\n")
             case "change":
                 print(f"{Fore.YELLOW}{change_contact(args)}\n")
-            case 'del':
+            case "del":
                 print(f"{delete_contact(args)}\n")
             case "phone":
                 print(f"{show_phone(args)}\n")
             case "all":
-                print(f"{show_all(args)}")
+                print(show_all(args))
             case _:
                 print(f"{mistaken_arg('invalid command')}\n")
 
