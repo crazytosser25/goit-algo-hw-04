@@ -10,11 +10,21 @@ def add_contact(args, contacts):
     if len(args) != 2:
         return "Invalid data. You must give me Name and Phone-number."
     name, phone = args
+    if len(phone) not in [10,13]:
+        return "Invalid Phone-number."
+    if name in contacts:
+        return "Invalid Name. This contact already exists"
     contacts[name] = phone
     return "Contact added."
 
-def change_contact():
-    pass
+def change_contact(args, contacts):
+    if len(args) != 2:
+        return "Invalid data. You must give me Name and new Phone-number."
+    name, phone = args
+    if len(phone) not in [10,13]:
+        return "Invalid Phone-number."
+    contacts[name] = phone
+    return "Contact added."
 
 def show_phone():
     pass
@@ -38,15 +48,10 @@ def main():
                 print("How can I help you?")
             case "add":
                 print(add_contact(args, contacts))
+            case "change":
+                print(change_contact(args, contacts))
             case _:
                 print("Invalid command.")
-
-        # if command == "hello":
-        #     print("How can I help you?")
-        # elif command == "add":
-        #     print(add_contact(args, contacts))
-        # else:
-        #     print("Invalid command.")
 
 
 if __name__ == "__main__":
