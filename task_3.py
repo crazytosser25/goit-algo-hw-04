@@ -51,7 +51,7 @@ def print_line(name: str, title: str, counter: int) -> None:
     else:
         name = f'{Fore.YELLOW}{name}'
     
-    print(name.ljust(25, ' ') + f'{Fore.WHITE}{arrow}' + f'{Fore.CYAN}{title}' + f'{Fore.WHITE}')
+    print(f'{name.ljust(55, ' ')} {Fore.WHITE}{arrow} {Fore.CYAN}{title} {Fore.WHITE}')
 
 
 # Start of program
