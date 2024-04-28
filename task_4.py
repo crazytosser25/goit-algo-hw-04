@@ -26,11 +26,20 @@ def change_contact(args, contacts):
     contacts[name] = phone
     return "Contact added."
 
-def show_phone():
-    pass
+def show_phone(args, contacts):
+    if len(args) != 1:
+        return "Invalid data. You must give me Name."
+    name = args[0]
+    if name not in contacts:
+        return "Invalid Name. This contact doesn't exist"
+    
+    return contacts[name]
 
-def show_all():
-    pass
+def show_all(args, contacts):
+    output_of_contacts = ''
+    for name in contacts:
+        output_of_contacts += (f"{name} - {contacts[name]}\n")
+    return output_of_contacts
 
 def main():
     contacts = {}
@@ -50,6 +59,10 @@ def main():
                 print(add_contact(args, contacts))
             case "change":
                 print(change_contact(args, contacts))
+            case "phone":
+                print(show_phone(args, contacts))
+            case "all":
+                print(show_all(args, contacts))
             case _:
                 print("Invalid command.")
 
