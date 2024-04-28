@@ -28,7 +28,7 @@ def parsing_folder(path: str, counter=1) -> None:
         for element in path_to_file.iterdir():
             if element.is_dir():
                 print_line(element.name, 'folder', counter)
-                parsing_attachments(element, counter+1)
+                parsing_folder(element, counter+1)
             if element.is_file():
                 print_line(element.name, 'file', counter)
         
